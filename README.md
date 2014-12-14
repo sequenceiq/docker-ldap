@@ -1,9 +1,18 @@
-## Quick Setup LDAP Service
+You can perform initial configuration of OpenLDAP through the
+following environment variables:
 
-    container_id=$(docker run -d timgreen/ldap:latest)
-    container_ip=$(docker inspect $container_id | jshon -e NetworkSettings -e IpAddress -u)
-    ssh root@$container_ip # default password is '123456', please change it
-    # cd /dev/shm/scripts/
-    # # edit ldap_config
-    # ./config_ldap.sh
-    # exit
+```
+SLAPD_PASSWORD
+SLAPD_ORG (default: nodomain)
+SLAPD_DOMAIN (default: nodomain)
+SLAPD_BACKEND (default: MDB)
+SLAPD_ALLOW_V2 (default: false)
+SLAPD_PURGE_DB (default: false)
+SLAPD_MOVE_OLD_DB (default: true)
+```
+
+Setting `SLAPD_PASSWORD` to configure the admin password is required.
+After the initial setup, a flag file, `/etc/ldap/docker-configured`,
+will be created containing the current timestamp, and no further
+attempts to reconfigure `slapd` will be made as long as that file
+exists.
