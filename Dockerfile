@@ -8,6 +8,7 @@ RUN apt-get update && \
   apt-get -y install slapd ldap-utils ldapscripts && \
   rm -rf /var/lib/apt/lists/*
 
+ADD files /ldap
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
