@@ -3,6 +3,6 @@ objectclass: inetOrgPerson
 cn: Bind User
 sn: Bind
 uid: binduser
-userpassword: Zht6YelDH
+userpassword: {SSHA}ClxYckJ07Sdb/Z6ot72WusR7JKmt0QcL
 description: Bind User
 
