@@ -1,0 +1,9 @@
+ldap:
+  image: muzili/ldap:latest
+  environment:
+    SLAPD_PASSWORD: lrbcnUAcerzEo
+    SLAPD_DOMAIN: example.com
+    SLAPD_ORG: example.com
+    VIRTUAL_HOST: ldap.example.com
+
+  hostname:     ldap.example.com

@@ -29,11 +29,6 @@ pre_start_action() {
       slapd slapd/dump_database     select when needed
 EOF
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure -f noninteractive slapd
-    service slapd start
-    cd /ldap && \
-        ldapadd -x -D cn=admin,dc=moretv,dc=com,dc=cn -w $SLAPD_PASSWORD -c -f front.ldif &&\
-        ldapadd -x -D cn=admin,dc=moretv,dc=com,dc=cn -w $SLAPD_PASSWORD -c -f more.ldif
-    killall -9 slapd
     echo "Configuration finished."
 }
 
