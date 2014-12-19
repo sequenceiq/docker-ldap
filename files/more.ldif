@@ -1,8 +1,0 @@
-dn: cn=Bind User,ou=users,dc=moretv,dc=com,dc=cn
-objectclass: inetOrgPerson
-cn: Bind User
-sn: Bind
-uid: binduser
-userpassword: {SSHA}ClxYckJ07Sdb/Z6ot72WusR7JKmt0QcL
-description: Bind User
-
