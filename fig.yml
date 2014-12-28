@@ -8,5 +8,15 @@ ldap:
     SLAPD_BINDUSER: binduser
     SLAPD_BINDPWD: KN23LvG1yp42c
     VIRTUAL_HOST: ldap.example.com
-
   hostname:     ldap.example.com
+
+ldapadmin:
+  image: muzili/phpldapadmin:latest
+  environment:
+    LDAP_HOST: ldap
+    LDAP_BASE_DN: dc=example,dc=com
+    LDAP_LOGIN_DN: cn=admin,dc=example,dc=com
+    LDAP_SERVER_NAME: ldapadmin.example.com
+    VIRTUAL_HOST: ldapadmin.example.com
+  links:
+    - ldap:ldap
