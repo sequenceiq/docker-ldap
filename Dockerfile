@@ -12,6 +12,7 @@ RUN apt-get update && \
   apt-get -y install slapd ldap-utils ldapscripts && \
   rm -rf /var/lib/apt/lists/*
 
+ADD ldapscripts/ /etc/ldapscripts/
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 RUN touch /first_run
