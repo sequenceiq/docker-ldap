@@ -4,7 +4,8 @@ pre_start_action() {
 	echo >&2 "Did you forget to add -e SLAPD_PASSWORD=... ?"
 	exit 1
     fi
-
+    
+    TLS_REQCERT="${TLS_REQCERT:-never}"
     SLAPD_ORG="${SLAPD_ORG:-nodomain}"
     SLAPD_DOMAIN="${SLAPD_DOMAIN:-nodomain}"
     SLAPD_DC="${SLAPD_DC:-dc=nodomain}"
@@ -83,6 +84,7 @@ dn: ou=projects,$SLAPD_DC
 objectClass: organizationalUnit
 ou: projects
 EOF
+    echo "TLS_REQCERT never" >> /etc/ldap/ldap.conf
     ldapadd -w $SLAPD_PASSWORD -x -D cn=admin,$SLAPD_DC -f /etc/ldapscripts/create_users_and_groups.ldif
     ldapaddgroup bindgroup
     ldapadduser ${SLAPD_BINDUSER} bindgroup
