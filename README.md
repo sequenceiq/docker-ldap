@@ -3,6 +3,7 @@ following environment variables:
 
 ```
 SLAPD_PASSWORD
+TLS_REQCERT (default: never)
 SLAPD_ORG (default: nodomain)
 SLAPD_DOMAIN (default: nodomain)
 SLAPD_BACKEND (default: MDB)
