@@ -84,7 +84,7 @@ dn: ou=projects,$SLAPD_DC
 objectClass: organizationalUnit
 ou: projects
 EOF
-    echo "TLS_REQCERT never" >> /etc/ldap/ldap.conf
+    echo "TLS_REQCERT $TLS_REQCERT" >> /etc/ldap/ldap.conf
     ldapadd -w $SLAPD_PASSWORD -x -D cn=admin,$SLAPD_DC -f /etc/ldapscripts/create_users_and_groups.ldif
     ldapaddgroup bindgroup
     ldapadduser ${SLAPD_BINDUSER} bindgroup
