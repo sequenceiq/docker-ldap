@@ -47,9 +47,9 @@ MSUFFIX="ou=machines"      # Machines ou (just under $SUFFIX)
 SASLAUTH=""
 BINDDN="cn=admin,$SLAPD_DC"
 BINDPWDFILE="/etc/ldapscripts/ldapscripts.passwd"
-GIDSTART="10000" # Group ID
-UIDSTART="10000" # User ID
-MIDSTART="20000" # Machine ID
+GIDSTART="1000" # Group ID
+UIDSTART="1000" # User ID
+MIDSTART="2000" # Machine ID
 GCLASS="posixGroup"   # Leave "posixGroup" here if not sure !
 CREATEHOMES="no"      # Create home directories and set rights ?
 PASSWORDGEN="pwgen"
@@ -76,6 +76,10 @@ ou: users
 dn: ou=groups,$SLAPD_DC
 objectClass: organizationalUnit
 ou: groups
+
+dn: ou=machines,$SLAPD_DC
+objectClass: organizationalUnit
+ou: machines
 
 dn: ou=roles,$SLAPD_DC
 objectClass: organizationalUnit
