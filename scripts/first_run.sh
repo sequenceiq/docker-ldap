@@ -15,6 +15,7 @@ pre_start_action() {
     SLAPD_MOVE_OLD_DB="${SLAPD_MOVE_OLD_DB:-true}"
     SLAPD_BINDUSER="${SLAPD_BINDUSER:-binduser}"
     SLAPD_BINDPWD="${SLAPD_BINDPWD:-bindpassword}"
+    SLAPD_BINDGROUP="${SLAPD_BINDGROUP:-bindgroup}"
 #    SLAPD_BINDPWD=$(slappasswd -s $SLAPD_BINDPWD)
 
     # Careful with whitespace here. Leading whitespace in the values
@@ -86,8 +87,8 @@ ou: projects
 EOF
     echo "TLS_REQCERT $TLS_REQCERT" >> /etc/ldap/ldap.conf
     ldapadd -w $SLAPD_PASSWORD -x -D cn=admin,$SLAPD_DC -f /etc/ldapscripts/create_users_and_groups.ldif
-    ldapaddgroup bindgroup
-    ldapadduser ${SLAPD_BINDUSER} bindgroup
+    ldapaddgroup $SLAPD_BINDGROUP
+    ldapadduser ${SLAPD_BINDUSER} $SLAPD_BINDGROUP
     ldapsetpasswd ${SLAPD_BINDUSER} $(slappasswd -s ${SLAPD_BINDPWD})
     kill -TERM `cat /var/run/slapd/slapd.pid`
     echo "Configuration finished."
